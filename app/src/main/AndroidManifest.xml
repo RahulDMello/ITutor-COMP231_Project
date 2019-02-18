@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".RoleSelectionActivity" />
+        <activity android:name=".profile.StudentProfileActivity" />
+        <activity android:name=".profile.TutorProfileActivity"></activity>
     </application>
 
 </manifest>

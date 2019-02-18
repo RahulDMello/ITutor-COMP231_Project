@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1047679610900",
+    "firebase_url": "https://comp231-project.firebaseio.com",
+    "project_id": "comp231-project",
+    "storage_bucket": "comp231-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047679610900:android:057ca213cc28cd79",
+        "android_client_info": {
+          "package_name": "com.example.itutor.itutor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047679610900-78orruuts150qf9hb3c8rmkqjtrvvbl9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEZi84_WEnM9-8Z6wc1932xN3-n0FptbA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

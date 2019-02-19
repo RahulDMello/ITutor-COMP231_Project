@@ -56,11 +56,13 @@ public class StudentProfileViewModel extends ViewModel {
 
         final DatabaseReference studentProfileRef = mRootRef.child("users").child(mAuth.getUid()).child("studentProfile");
 
+        // attachValueListenerForStudentProfile(studentProfileRef);
+
         studentProfileRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (!dataSnapshot.exists()) {
-                    studentProfileRef.setValue(this)
+                    studentProfileRef.setValue(new StudentProfile(mAuth.getCurrentUser()))
                             .continueWith(new Continuation<Void, Object>() {
                                 @Override
                                 public Object then(@NonNull Task<Void> task) throws Exception {
@@ -68,6 +70,7 @@ public class StudentProfileViewModel extends ViewModel {
                                         attachValueListenerForStudentProfile(studentProfileRef);
                                     } else {
                                         // TODO: present error
+                                        int a = 5;
                                     }
                                     return null;
                                 }
@@ -80,6 +83,7 @@ public class StudentProfileViewModel extends ViewModel {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // TODO: present error
+                int a = 5;
             }
         });
     }
@@ -100,6 +104,7 @@ public class StudentProfileViewModel extends ViewModel {
 
     private void updateProfile(StudentProfile studentProfile) {
         profile.setValue(studentProfile);
+        // setFirstName(studentProfile.getFirstName());
     }
 
     public void setProfile(MutableLiveData<StudentProfile> profile) {
@@ -123,7 +128,7 @@ public class StudentProfileViewModel extends ViewModel {
     }
 
     public String getDateOfBirth() {
-        return DateUtilsHelper.getShortFormattedDate(getProfileValue().getDateOfBirth());
+        return getProfileValue().getFormattedDateOfBirth();
     }
 
     public void setDateOfBirth(String dateOfBirth) {

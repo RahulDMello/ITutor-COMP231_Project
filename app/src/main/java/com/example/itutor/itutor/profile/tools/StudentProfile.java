@@ -55,6 +55,10 @@ public class StudentProfile {
         return dateOfBirth;
     }
 
+    public String getFormattedDateOfBirth() {
+        return DateUtilsHelper.getShortFormattedDate(getDateOfBirth());
+    }
+
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }

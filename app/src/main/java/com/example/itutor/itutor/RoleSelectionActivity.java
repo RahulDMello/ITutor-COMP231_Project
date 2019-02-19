@@ -15,7 +15,6 @@ public class RoleSelectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_role_selection);
         ActivityRoleSelectionBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_role_selection);
         binding.studentButton.setOnClickListener(new View.OnClickListener() {
             @Override

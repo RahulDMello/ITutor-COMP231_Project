@@ -2,6 +2,7 @@ package com.example.itutor.main.profile.viewmodel;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.databinding.Observable;
 import android.support.annotation.NonNull;
 
 import com.example.itutor.main.tools.DateUtilsHelper;
@@ -101,35 +102,10 @@ public class StudentProfileViewModel extends ViewModel {
     }
 
     private void updateProfile(StudentProfile studentProfile) {
-        profile.setValue(studentProfile);
-        // setFirstName(studentProfile.getFirstName());
+        profile.getValue().update(studentProfile);
     }
 
     public void setProfile(MutableLiveData<StudentProfile> profile) {
         this.profile = profile;
-    }
-
-    public String getFirstName() {
-        return getProfileValue().getFirstName();
-    }
-
-    public void setFirstName(String firstName) {
-        getProfileValue().setFirstName(firstName);
-    }
-
-    public String getLastName() {
-        return getProfileValue().getLastName();
-    }
-
-    public void setLastName(String lastName) {
-        getProfileValue().setLastName(lastName);
-    }
-
-    public String getDateOfBirth() {
-        return getProfileValue().getFormattedDateOfBirth();
-    }
-
-    public void setDateOfBirth(String dateOfBirth) {
-        getProfileValue().setDateOfBirth(DateUtilsHelper.getShortDate(dateOfBirth));
     }
 }

@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="activeModel"
-            type="com.example.itutor.main.profile.viewmodel.StudentProfileViewModel" />
+            name="studentProfile"
+            type="com.example.itutor.main.profile.model.StudentProfile" />
 
     </data>
 
@@ -36,7 +36,7 @@
                 android:id="@+id/first_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@={activeModel.firstName}" />
+                android:text="@={studentProfile.firstName}" />
         </LinearLayout>
 
         <LinearLayout
@@ -53,7 +53,7 @@
                 android:id="@+id/last_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@={activeModel.lastName}" />
+                android:text="@={studentProfile.lastName}" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,7 +70,7 @@
                 android:id="@+id/date_of_birth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@={activeModel.dateOfBirth}" />
+                android:text="@={studentProfile.formattedDateOfBirth}" />
         </LinearLayout>
 
     </LinearLayout>

@@ -25,11 +25,9 @@ public class StudentProfileActivity extends AppCompatActivity {
         activeModel.getProfile().observe(this, new Observer<StudentProfile>() {
             @Override
             public void onChanged(@Nullable StudentProfile studentProfile) {
-                binding.firstName.setText(studentProfile.getFirstName());
-                binding.lastName.setText(studentProfile.getLastName());
-                binding.dateOfBirth.setText(studentProfile.getFormattedDateOfBirth());
+                binding.setStudentProfile(activeModel.getProfileValue());
             }
         });
-       binding.setActiveModel(activeModel);
+       binding.setStudentProfile(activeModel.getProfileValue());
     }
 }

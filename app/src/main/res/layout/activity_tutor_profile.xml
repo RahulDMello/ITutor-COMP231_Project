@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="activeModel"
-            type="com.example.itutor.main.profile.viewmodel.TutorProfileViewModel" />
+            name="tutorProfile"
+            type="com.example.itutor.main.profile.model.TutorProfile" />
 
     </data>
 
@@ -36,7 +36,7 @@
                 android:id="@+id/first_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@={activeModel.firstName}" />
+                android:text="@={tutorProfile.firstName}" />
         </LinearLayout>
 
         <LinearLayout
@@ -53,7 +53,7 @@
                 android:id="@+id/last_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@={activeModel.lastName}" />
+                android:text="@={tutorProfile.lastName}" />
         </LinearLayout>
 
         <LinearLayout
@@ -70,7 +70,7 @@
                 android:id="@+id/subject1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@={activeModel.subject1}" />
+                android:text="@={tutorProfile.subject1}" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,13 +81,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Subject 1: " />
+                android:text="Subject 2: " />
 
             <EditText
                 android:id="@+id/subject2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@={activeModel.subject2}" />
+                android:text="@={tutorProfile.subject2}" />
         </LinearLayout>
 
         <LinearLayout
@@ -104,7 +104,7 @@
                 android:id="@+id/subject3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@={activeModel.subject3}" />
+                android:text="@={tutorProfile.subject3}" />
         </LinearLayout>
 
     </LinearLayout>

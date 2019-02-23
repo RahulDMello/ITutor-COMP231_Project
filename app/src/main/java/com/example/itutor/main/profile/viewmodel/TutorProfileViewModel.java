@@ -1,9 +1,14 @@
 package com.example.itutor.main.profile.viewmodel;
 
 import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModel;
+import android.databinding.Observable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
+import com.example.itutor.main.MainActivity;
+import com.example.itutor.main.profile.model.StudentProfile;
 import com.example.itutor.main.profile.model.TutorProfile;
 import com.example.itutor.main.tools.DateUtilsHelper;
 import com.google.android.gms.tasks.Continuation;
@@ -54,27 +59,25 @@ public class TutorProfileViewModel extends ViewModel {
 
         final DatabaseReference tutorProfileRef = mRootRef.child("users").child(mAuth.getUid()).child("tutorProfile");
 
+        profile.getValue().addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                if (sender instanceof TutorProfile) {
+                    tutorProfileRef.setValue(sender);
+                }
+            }
+        });
+
         // attachValueListenerForStudentProfile(studentProfileRef);
 
         tutorProfileRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()) {
-                    tutorProfileRef.setValue(new TutorProfile(mAuth.getCurrentUser()))
-                            .continueWith(new Continuation<Void, Object>() {
-                                @Override
-                                public Object then(@NonNull Task<Void> task) throws Exception {
-                                    if(task.isSuccessful()) {
-                                        attachValueListenerForTutorProfile(tutorProfileRef);
-                                    } else {
-                                        // TODO: present error
-                                        int a = 5;
-                                    }
-                                    return null;
-                                }
-                            });
+                if (dataSnapshot.exists()) {
+                    TutorProfile profile = dataSnapshot.getValue(TutorProfile.class);
+                    TutorProfileViewModel.this.profile.getValue().update(profile);
                 } else {
-                    attachValueListenerForTutorProfile(tutorProfileRef);
+
                 }
             }
 
@@ -86,65 +89,7 @@ public class TutorProfileViewModel extends ViewModel {
         });
     }
 
-    private void attachValueListenerForTutorProfile(DatabaseReference tutorProfileRef) {
-        tutorProfileRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                updateProfile(dataSnapshot.getValue(TutorProfile.class));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // TODO: present error
-            }
-        });
-    }
-
-    private void updateProfile(TutorProfile tutorProfile) {
-        profile.setValue(tutorProfile);
-        // setFirstName(studentProfile.getFirstName());
-    }
-
     public void setProfile(MutableLiveData<TutorProfile> profile) {
         this.profile = profile;
-    }
-
-    public String getFirstName() {
-        return getProfileValue().getFirstName();
-    }
-
-    public void setFirstName(String firstName) {
-        getProfileValue().setFirstName(firstName);
-    }
-
-    public String getLastName() {
-        return getProfileValue().getLastName();
-    }
-
-    public void setLastName(String lastName) {
-        getProfileValue().setLastName(lastName);
-    }
-
-    public String getSubject1() {
-        return getProfileValue().getSubject1();
-    }
-
-    public void setSubject1(String subject1) {
-        getProfileValue().setSubject1(subject1);
-    }
-
-    public String getSubject2() {
-        return getProfileValue().getSubject2();
-    }
-
-    public void setSubject2(String subject2) {
-        getProfileValue().setSubject2(subject2);
-    }
-
-    public String getSubject3() {
-        return getProfileValue().getSubject3();
-    }
-
-    public void setSubject3(String subject3) { getProfileValue().setSubject3(subject3);
     }
 }

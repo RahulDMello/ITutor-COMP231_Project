@@ -8,9 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.itutor.main.R;
+import com.example.itutor.main.databinding.ActivityStudentProfileBinding;
 import com.example.itutor.main.databinding.ActivityTutorProfileBinding;
 import com.example.itutor.main.profile.model.StudentProfile;
 import com.example.itutor.main.profile.model.TutorProfile;
+import com.example.itutor.main.profile.viewmodel.StudentProfileViewModel;
 import com.example.itutor.main.profile.viewmodel.TutorProfileViewModel;
 
 public class TutorProfileActivity extends AppCompatActivity {
@@ -20,22 +22,16 @@ public class TutorProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    //    setContentView(R.layout.activity_tutor_profile);
         final ActivityTutorProfileBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_tutor_profile);
         activeModel = ViewModelProviders.of(this).get(TutorProfileViewModel.class);
         activeModel.loadProfile();
+
         activeModel.getProfile().observe(this, new Observer<TutorProfile>() {
             @Override
             public void onChanged(@Nullable TutorProfile tutorProfile) {
-                binding.firstName.setText(tutorProfile.getFirstName());
-                binding.lastName.setText(tutorProfile.getLastName());
-                binding.subject1.setText(tutorProfile.getSubject1());
-                binding.subject2.setText(tutorProfile.getSubject2());
-                binding.subject3.setText(tutorProfile.getSubject3());
-                //binding.dateOfBirth.setText(studentProfile.getFormattedDateOfBirth());
-
+                binding.setTutorProfile(activeModel.getProfileValue());
             }
         });
-        binding.setActiveModel(activeModel);
+        binding.setTutorProfile(activeModel.getProfileValue());
     }
 }

@@ -18,7 +18,7 @@
         </activity>
         <activity android:name="com.example.itutor.main.profile.view.RoleSelectionActivity" />
         <activity android:name="com.example.itutor.main.profile.view.StudentProfileActivity" />
-        <activity android:name="com.example.itutor.main.profile.TutorProfileActivity"></activity>
+        <activity android:name="com.example.itutor.main.profile.view.TutorProfileActivity"></activity>
     </application>
 
 </manifest>

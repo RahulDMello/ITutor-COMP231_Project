@@ -8,7 +8,6 @@ import android.view.View;
 
 import com.example.itutor.main.R;
 import com.example.itutor.main.databinding.ActivityRoleSelectionBinding;
-import com.example.itutor.main.profile.TutorProfileActivity;
 
 public class RoleSelectionActivity extends AppCompatActivity {
 

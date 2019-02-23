@@ -1,4 +1,4 @@
-package com.example.itutor.main.profile;
+package com.example.itutor.main.profile.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

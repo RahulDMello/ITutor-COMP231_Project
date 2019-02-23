@@ -37,10 +37,6 @@ public class StudentProfile extends BaseObservable {
         setFormattedDateOfBirth(DateUtilsHelper.getShortFormattedDate(this.dateOfBirth = studentProfile.dateOfBirth));
     }
 
-    public boolean equals(StudentProfile profile) {
-        return id == profile.id && firstName == profile.firstName && lastName == profile.lastName && dateOfBirth == profile.dateOfBirth;
-    }
-
     @Bindable
     public String getId() {
         return id;

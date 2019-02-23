@@ -6,8 +6,6 @@ import android.databinding.Observable;
 import android.support.annotation.NonNull;
 
 import com.example.itutor.main.profile.model.StudentProfile;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,7 +21,7 @@ public class StudentProfileViewModel extends ViewModel {
     private MutableLiveData<StudentProfile> profile;
 
     public MutableLiveData<StudentProfile> getProfile() {
-        if(profile == null || profile.getValue() == null) {
+        if (profile == null || profile.getValue() == null) {
             loadProfile();
         }
         return profile;
@@ -82,10 +80,6 @@ public class StudentProfileViewModel extends ViewModel {
                 int a = 5;
             }
         });
-    }
-
-    private void updateProfile(StudentProfile studentProfile) {
-        profile.getValue().update(studentProfile);
     }
 
     public void setProfile(MutableLiveData<StudentProfile> profile) {

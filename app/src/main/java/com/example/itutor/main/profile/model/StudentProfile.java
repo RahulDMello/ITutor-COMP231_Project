@@ -34,7 +34,11 @@ public class StudentProfile extends BaseObservable {
         setId(studentProfile.id);
         setFirstName(studentProfile.firstName);
         setLastName(studentProfile.lastName);
-        setDateOfBirth(this.dateOfBirth = studentProfile.dateOfBirth);
+        setFormattedDateOfBirth(DateUtilsHelper.getShortFormattedDate(this.dateOfBirth = studentProfile.dateOfBirth));
+    }
+
+    public boolean equals(StudentProfile profile) {
+        return id == profile.id && firstName == profile.firstName && lastName == profile.lastName && dateOfBirth == profile.dateOfBirth;
     }
 
     @Bindable
@@ -68,21 +72,14 @@ public class StudentProfile extends BaseObservable {
     }
 
     @Bindable
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-        notifyPropertyChanged(BR.dateOfBirth);
-    }
-
-    @Bindable
     public String getFormattedDateOfBirth() {
-        return DateUtilsHelper.getShortFormattedDate(getDateOfBirth());
+        return DateUtilsHelper.getShortFormattedDate(dateOfBirth);
     }
 
     public void setFormattedDateOfBirth(String formattedDateOfBirth) {
-        setDateOfBirth(DateUtilsHelper.getShortDate(formattedDateOfBirth));
+        this.dateOfBirth = DateUtilsHelper.getShortDate(formattedDateOfBirth);
+        if (dateOfBirth != null) {
+            notifyPropertyChanged(BR.formattedDateOfBirth);
+        }
     }
 }

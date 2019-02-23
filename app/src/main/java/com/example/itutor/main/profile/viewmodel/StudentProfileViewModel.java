@@ -5,7 +5,6 @@ import android.arch.lifecycle.ViewModel;
 import android.databinding.Observable;
 import android.support.annotation.NonNull;
 
-import com.example.itutor.main.tools.DateUtilsHelper;
 import com.example.itutor.main.profile.model.StudentProfile;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.Task;
@@ -55,27 +54,25 @@ public class StudentProfileViewModel extends ViewModel {
 
         final DatabaseReference studentProfileRef = mRootRef.child("users").child(mAuth.getUid()).child("studentProfile");
 
+        profile.getValue().addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
+            @Override
+            public void onPropertyChanged(Observable sender, int propertyId) {
+                if (sender instanceof StudentProfile) {
+                    studentProfileRef.setValue(sender);
+                }
+            }
+        });
+
         // attachValueListenerForStudentProfile(studentProfileRef);
 
         studentProfileRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!dataSnapshot.exists()) {
-                    studentProfileRef.setValue(new StudentProfile(mAuth.getCurrentUser()))
-                            .continueWith(new Continuation<Void, Object>() {
-                                @Override
-                                public Object then(@NonNull Task<Void> task) throws Exception {
-                                    if(task.isSuccessful()) {
-                                        attachValueListenerForStudentProfile(studentProfileRef);
-                                    } else {
-                                        // TODO: present error
-                                        int a = 5;
-                                    }
-                                    return null;
-                                }
-                            });
+                if (dataSnapshot.exists()) {
+                    StudentProfile profile = dataSnapshot.getValue(StudentProfile.class);
+                    StudentProfileViewModel.this.profile.getValue().update(profile);
                 } else {
-                    attachValueListenerForStudentProfile(studentProfileRef);
+
                 }
             }
 
@@ -83,20 +80,6 @@ public class StudentProfileViewModel extends ViewModel {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // TODO: present error
                 int a = 5;
-            }
-        });
-    }
-
-    private void attachValueListenerForStudentProfile(DatabaseReference studentProfileRef) {
-        studentProfileRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                updateProfile(dataSnapshot.getValue(StudentProfile.class));
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // TODO: present error
             }
         });
     }

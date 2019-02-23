@@ -1,11 +1,9 @@
-package com.example.itutor.itutor.profile;
+package com.example.itutor.main.profile;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.itutor.itutor.R;
-import com.example.itutor.itutor.RoleSelectionActivity;
+import com.example.itutor.main.R;
 
 public class TutorProfileActivity extends AppCompatActivity {
 

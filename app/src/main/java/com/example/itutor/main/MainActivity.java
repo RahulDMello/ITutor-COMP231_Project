@@ -1,10 +1,11 @@
-package com.example.itutor.itutor;
+package com.example.itutor.main;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.itutor.main.profile.view.RoleSelectionActivity;
 import com.firebase.ui.auth.AuthUI;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

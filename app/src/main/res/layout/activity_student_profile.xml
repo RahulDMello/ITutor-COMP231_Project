@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".profile.StudentProfileActivity">
+    tools:context="com.example.itutor.main.profile.view.StudentProfileActivity">
 
     <data>
 
         <variable
             name="activeModel"
-            type="com.example.itutor.itutor.profile.viewmodel.StudentProfileViewModel" />
+            type="com.example.itutor.main.profile.viewmodel.StudentProfileViewModel" />
 
     </data>
 

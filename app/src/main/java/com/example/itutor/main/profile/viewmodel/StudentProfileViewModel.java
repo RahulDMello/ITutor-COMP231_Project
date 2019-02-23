@@ -1,12 +1,11 @@
-package com.example.itutor.itutor.profile.viewmodel;
+package com.example.itutor.main.profile.viewmodel;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
-import android.widget.Toast;
 
-import com.example.itutor.itutor.DateUtilsHelper;
-import com.example.itutor.itutor.profile.tools.StudentProfile;
+import com.example.itutor.main.tools.DateUtilsHelper;
+import com.example.itutor.main.profile.model.StudentProfile;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -15,7 +14,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.functions.FirebaseFunctions;
 
 public class StudentProfileViewModel extends ViewModel {
 

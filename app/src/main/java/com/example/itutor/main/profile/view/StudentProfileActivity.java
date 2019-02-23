@@ -1,4 +1,4 @@
-package com.example.itutor.itutor.profile;
+package com.example.itutor.main.profile.view;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
@@ -7,10 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.itutor.itutor.R;
-import com.example.itutor.itutor.databinding.ActivityStudentProfileBinding;
-import com.example.itutor.itutor.profile.tools.StudentProfile;
-import com.example.itutor.itutor.profile.viewmodel.StudentProfileViewModel;
+import com.example.itutor.main.R;
+import com.example.itutor.main.databinding.ActivityStudentProfileBinding;
+import com.example.itutor.main.profile.model.StudentProfile;
+import com.example.itutor.main.profile.viewmodel.StudentProfileViewModel;
 
 public class StudentProfileActivity extends AppCompatActivity {
 

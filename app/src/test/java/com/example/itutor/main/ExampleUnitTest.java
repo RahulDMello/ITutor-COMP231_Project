@@ -1,4 +1,4 @@
-package com.example.itutor.itutor;
+package com.example.itutor.main;
 
 import org.junit.Test;
 

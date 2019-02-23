@@ -1,6 +1,6 @@
-package com.example.itutor.itutor.profile.tools;
+package com.example.itutor.main.profile.model;
 
-import com.example.itutor.itutor.DateUtilsHelper;
+import com.example.itutor.main.tools.DateUtilsHelper;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Date;

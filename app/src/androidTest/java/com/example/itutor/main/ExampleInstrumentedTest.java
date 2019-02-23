@@ -1,4 +1,4 @@
-package com.example.itutor.itutor;
+package com.example.itutor.main;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -4,13 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.itutor.main.profile.view.TutorProfileActivity">
 
+    <data>
+
+        <variable
+            name="activeModel"
+            type="com.example.itutor.main.profile.viewmodel.TutorProfileViewModel" />
+
+    </data>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TUTOR" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First name: " />
+
+            <EditText
+                android:id="@+id/first_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={activeModel.firstName}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last name: " />
+
+            <EditText
+                android:id="@+id/last_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={activeModel.lastName}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subject 1: " />
+
+            <EditText
+                android:id="@+id/subject1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={activeModel.subject1}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subject 1: " />
+
+            <EditText
+                android:id="@+id/subject2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={activeModel.subject2}" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subject 3: " />
+
+            <EditText
+                android:id="@+id/subject3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@={activeModel.subject3}" />
+        </LinearLayout>
+
     </LinearLayout>
+
+
 </layout>

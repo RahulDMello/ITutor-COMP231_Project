@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.View;
 
+import com.example.itutor.main.MasterActivity;
 import com.example.itutor.main.R;
 import com.example.itutor.main.databinding.ActivityRoleSelectionBinding;
 
-public class RoleSelectionActivity extends AppCompatActivity {
+public class RoleSelectionActivity extends MasterActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

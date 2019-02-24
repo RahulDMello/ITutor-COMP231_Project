@@ -34,9 +34,10 @@ public class StudentProfileViewModel extends ViewModel {
     public void loadProfile() {
 
         profile = new MutableLiveData<>();
-        profile.setValue(new StudentProfile());
 
         mAuth = FirebaseAuth.getInstance();
+
+        profile.setValue(new StudentProfile(mAuth.getCurrentUser()));
 
 /*      TODO: FOR LOGOUT
 

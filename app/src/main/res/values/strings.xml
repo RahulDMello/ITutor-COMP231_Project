@@ -3,4 +3,5 @@
     <string name="role_selection_title">Select your role:</string>
     <string name="role_selection_student_button">Student</string>
     <string name="role_selection_tutor_button">Tutor</string>
+    <string name="actionbar_signout">SignOut</string>
 </resources>

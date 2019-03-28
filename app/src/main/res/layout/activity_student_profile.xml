@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.itutor.main.profile.view.StudentProfileActivity">
 
@@ -8,7 +7,7 @@
 
         <variable
             name="studentProfile"
-            type="com.example.itutor.main.profile.model.StudentProfile" />
+            type="com.example.itutor.main.model.StudentProfile" />
 
     </data>
 
@@ -70,8 +69,16 @@
                 android:id="@+id/date_of_birth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:hint="@string/date_format"
                 android:text="@={studentProfile.formattedDateOfBirth}" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/search_tutor_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Book a Tutor" />
 
     </LinearLayout>
 </layout>

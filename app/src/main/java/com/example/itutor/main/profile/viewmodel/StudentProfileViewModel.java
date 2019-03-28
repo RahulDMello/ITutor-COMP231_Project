@@ -5,7 +5,7 @@ import android.arch.lifecycle.ViewModel;
 import android.databinding.Observable;
 import android.support.annotation.NonNull;
 
-import com.example.itutor.main.profile.model.StudentProfile;
+import com.example.itutor.main.model.StudentProfile;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,18 +39,6 @@ public class StudentProfileViewModel extends ViewModel {
 
         profile.setValue(new StudentProfile(mAuth.getCurrentUser()));
 
-/*      TODO: FOR LOGOUT
-
-        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() == null) {
-                    MyProfileActivity.super.onBackPressed();
-                }
-            }
-        });
-*/
-
         final DatabaseReference studentProfileRef = mRootRef.child("users").child(mAuth.getUid()).child("studentProfile");
 
         profile.getValue().addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
@@ -61,8 +49,6 @@ public class StudentProfileViewModel extends ViewModel {
                 }
             }
         });
-
-        // attachValueListenerForStudentProfile(studentProfileRef);
 
         studentProfileRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

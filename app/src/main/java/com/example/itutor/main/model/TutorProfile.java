@@ -1,13 +1,10 @@
-package com.example.itutor.main.profile.model;
+package com.example.itutor.main.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.android.databinding.library.baseAdapters.BR;
-import com.example.itutor.main.tools.DateUtilsHelper;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Date;
 
 public class TutorProfile extends BaseObservable {
 
@@ -28,7 +25,7 @@ public class TutorProfile extends BaseObservable {
     }
 
     public TutorProfile(FirebaseUser user) {
-        id = user.getUid();
+        setId(user.getUid());
         firstName = "";
         lastName = "";
         subject1 = "";
@@ -51,9 +48,9 @@ public class TutorProfile extends BaseObservable {
         return id;
     }
 
-    public void setId(String id){
+    public void setId(String id) {
         this.id = id;
-    notifyPropertyChanged(BR.id);
+        notifyPropertyChanged(BR.id);
     }
 
     @Bindable
@@ -62,7 +59,7 @@ public class TutorProfile extends BaseObservable {
     }
 
     public void setFirstName(String firstName) {
-      this.firstName = firstName;
+        this.firstName = firstName;
         notifyPropertyChanged(BR.firstName);
     }
 

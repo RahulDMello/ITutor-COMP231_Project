@@ -1,4 +1,4 @@
-package com.example.itutor.main.profile.model;
+package com.example.itutor.main.model;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
@@ -24,7 +24,7 @@ public class StudentProfile extends BaseObservable {
     }
 
     public StudentProfile(FirebaseUser user) {
-        id = user.getUid();
+        setId(user.getUid());
         firstName = "";
         lastName = "";
         dateOfBirth = null;
@@ -73,9 +73,11 @@ public class StudentProfile extends BaseObservable {
     }
 
     public void setFormattedDateOfBirth(String formattedDateOfBirth) {
-        this.dateOfBirth = DateUtilsHelper.getShortDate(formattedDateOfBirth);
-        if (dateOfBirth != null) {
-            notifyPropertyChanged(BR.formattedDateOfBirth);
+        if (formattedDateOfBirth.length() == 10) {
+            this.dateOfBirth = DateUtilsHelper.getShortDate(formattedDateOfBirth);
+            if (dateOfBirth != null) {
+                notifyPropertyChanged(BR.formattedDateOfBirth);
+            }
         }
     }
 }

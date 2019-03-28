@@ -19,7 +19,8 @@
         <activity android:name=".profile.view.RoleSelectionActivity" />
         <activity android:name=".profile.view.StudentProfileActivity" />
         <activity android:name=".profile.view.TutorProfileActivity" />
-        <activity android:name=".MasterActivity"></activity>
+        <activity android:name=".MasterActivity" />
+        <activity android:name=".booking.view.SearchTutorActivity"></activity>
     </application>
 
 </manifest>

@@ -1,18 +1,12 @@
 package com.example.itutor.main.profile.viewmodel;
 
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModel;
 import android.databinding.Observable;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
-import com.example.itutor.main.MainActivity;
-import com.example.itutor.main.profile.model.StudentProfile;
-import com.example.itutor.main.profile.model.TutorProfile;
-import com.example.itutor.main.tools.DateUtilsHelper;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.Task;
+import com.example.itutor.main.model.TutorProfile;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,8 +22,8 @@ public class TutorProfileViewModel extends ViewModel {
     private MutableLiveData<TutorProfile> profile;
 
     public MutableLiveData<TutorProfile> getProfile() {
-        if(profile == null || profile.getValue() == null) {
-            loadProfile();
+        if (profile == null || profile.getValue() == null) {
+            loadProfile("");
         }
         return profile;
     }
@@ -38,26 +32,19 @@ public class TutorProfileViewModel extends ViewModel {
         return getProfile().getValue();
     }
 
-    public void loadProfile() {
+    public void loadProfile(String uid) {
 
         profile = new MutableLiveData<>();
-        profile.setValue(new TutorProfile());
 
         mAuth = FirebaseAuth.getInstance();
 
-/*      TODO: FOR LOGOUT
+        profile.setValue(new TutorProfile(mAuth.getCurrentUser()));
 
-        mAuth.addAuthStateListener(new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if (firebaseAuth.getCurrentUser() == null) {
-                    MyProfileActivity.super.onBackPressed();
-                }
-            }
-        });
-*/
+        if (TextUtils.isEmpty(uid)) {
+            uid = mAuth.getUid();
+        }
 
-        final DatabaseReference tutorProfileRef = mRootRef.child("users").child(mAuth.getUid()).child("tutorProfile");
+        final DatabaseReference tutorProfileRef = mRootRef.child("users").child(uid).child("tutorProfile");
 
         profile.getValue().addOnPropertyChangedCallback(new Observable.OnPropertyChangedCallback() {
             @Override
@@ -67,8 +54,6 @@ public class TutorProfileViewModel extends ViewModel {
                 }
             }
         });
-
-        // attachValueListenerForStudentProfile(studentProfileRef);
 
         tutorProfileRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

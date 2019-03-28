@@ -8,7 +8,7 @@
 
         <variable
             name="tutorProfile"
-            type="com.example.itutor.main.profile.model.TutorProfile" />
+            type="com.example.itutor.main.model.TutorProfile" />
 
     </data>
 

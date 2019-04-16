@@ -6,6 +6,9 @@ import android.databinding.Bindable;
 import com.android.databinding.library.baseAdapters.BR;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class TutorProfile extends BaseObservable {
 
     private String id;
@@ -14,6 +17,7 @@ public class TutorProfile extends BaseObservable {
     private String subject1;
     private String subject2;
     private String subject3;
+    private HashMap<String, BookedMeeting> bookedMeetings;
 
     public TutorProfile() {
         id = "";
@@ -22,6 +26,7 @@ public class TutorProfile extends BaseObservable {
         subject1 = "";
         subject2 = "";
         subject3 = "";
+        bookedMeetings = new HashMap<>();
     }
 
     public TutorProfile(FirebaseUser user) {
@@ -31,7 +36,7 @@ public class TutorProfile extends BaseObservable {
         subject1 = "";
         subject2 = "";
         subject3 = "";
-
+        bookedMeetings = new HashMap<>();
     }
 
     public void update(TutorProfile tutorProfile) {
@@ -41,6 +46,7 @@ public class TutorProfile extends BaseObservable {
         setSubject1(tutorProfile.subject1);
         setSubject2(tutorProfile.subject2);
         setSubject3(tutorProfile.subject3);
+        setBookedMeetings(tutorProfile.bookedMeetings);
     }
 
     @Bindable
@@ -79,7 +85,7 @@ public class TutorProfile extends BaseObservable {
     }
 
     public void setSubject1(String subject1) {
-        this.subject1 = subject1;
+        this.subject1 = subject1.toLowerCase();
         notifyPropertyChanged(BR.subject1);
     }
 
@@ -89,7 +95,7 @@ public class TutorProfile extends BaseObservable {
     }
 
     public void setSubject2(String subject2) {
-        this.subject2 = subject2;
+        this.subject2 = subject2.toLowerCase();
         notifyPropertyChanged(BR.subject2);
     }
 
@@ -99,8 +105,15 @@ public class TutorProfile extends BaseObservable {
     }
 
     public void setSubject3(String subject3) {
-        this.subject3 = subject3;
+        this.subject3 = subject3.toLowerCase();
         notifyPropertyChanged(BR.subject3);
     }
 
+    public HashMap<String, BookedMeeting> getBookedMeetings() {
+        return bookedMeetings;
+    }
+
+    public void setBookedMeetings(HashMap<String, BookedMeeting> bookedMeetings) {
+        this.bookedMeetings = bookedMeetings;
+    }
 }

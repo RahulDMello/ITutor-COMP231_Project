@@ -4,6 +4,7 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.android.databinding.library.baseAdapters.BR;
+import com.example.itutor.main.SessionInfo;
 import com.example.itutor.main.tools.DateUtilsHelper;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -54,6 +55,7 @@ public class StudentProfile extends BaseObservable {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+        SessionInfo.STUDENT_NAME = firstName + " " + lastName;
         notifyPropertyChanged(BR.firstName);
     }
 
@@ -64,6 +66,7 @@ public class StudentProfile extends BaseObservable {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+        SessionInfo.STUDENT_NAME = firstName + " " + lastName;
         notifyPropertyChanged(BR.lastName);
     }
 

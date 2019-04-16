@@ -31,10 +31,9 @@ public class SearchTutorActivity extends MasterActivity implements LaunchTutorPr
 
         TextView subjectFilter = findViewById(R.id.subjectFilter);
 
-        // TODO: filter capabilities
         activeModel.getAreProfilesLoaded().observe(this, areProfilesLoaded -> {
             if (areProfilesLoaded) {
-                SearchTutorAdapter adapter = new SearchTutorAdapter(SearchTutorActivity.this, activeModel.getTutorProfiles(subjectFilter.getText().toString()));
+                SearchTutorAdapter adapter = new SearchTutorAdapter(SearchTutorActivity.this, activeModel.getTutorProfiles(subjectFilter.getText().toString().toLowerCase()));
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL));

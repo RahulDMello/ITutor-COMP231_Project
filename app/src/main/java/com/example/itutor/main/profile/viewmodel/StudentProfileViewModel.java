@@ -64,7 +64,6 @@ public class StudentProfileViewModel extends ViewModel {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // TODO: present error
-                int a = 5;
             }
         });
     }

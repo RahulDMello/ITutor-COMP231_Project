@@ -2,11 +2,17 @@ package com.example.itutor.main.profile.viewmodel;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.content.Context;
 import android.databinding.Observable;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.widget.Toast;
 
+import com.example.itutor.main.model.BookedMeeting;
 import com.example.itutor.main.model.TutorProfile;
+import com.google.android.gms.tasks.OnCanceledListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,6 +32,25 @@ public class TutorProfileViewModel extends ViewModel {
             loadProfile("");
         }
         return profile;
+    }
+
+    public void bookAMeeting(Context context, BookedMeeting meeting) {
+        if (mAuth == null)
+            mAuth = FirebaseAuth.getInstance();
+
+        final DatabaseReference meetingsRef = mRootRef.child("users").child(getProfileValue().getId()).child("tutorProfile").child("bookedMeetings");
+
+        meetingsRef.push().setValue(meeting).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                Toast.makeText(context, "Meeting Booked", Toast.LENGTH_LONG).show();
+            }
+        }).addOnCanceledListener(new OnCanceledListener() {
+            @Override
+            public void onCanceled() {
+                Toast.makeText(context, "Error! Please try again.", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     public TutorProfile getProfileValue() {
@@ -69,7 +94,6 @@ public class TutorProfileViewModel extends ViewModel {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // TODO: present error
-                int a = 5;
             }
         });
     }

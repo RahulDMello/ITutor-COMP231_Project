@@ -4,6 +4,7 @@ import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
 
+import com.example.itutor.main.model.BookedMeeting;
 import com.example.itutor.main.model.TutorProfile;
 import com.example.itutor.main.model.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,9 +58,10 @@ public class BookTutorViewModel extends ViewModel {
 
     public List<TutorProfile> getTutorProfiles(final String subject) {
         return tutorProfiles.stream().filter((tutorProfile) ->
-                tutorProfile.getSubject1().contains(subject)
+                tutorProfile != null && !tutorProfile.getId().equals(mAuth.getUid())
+                        && (tutorProfile.getSubject1().contains(subject)
                         || tutorProfile.getSubject2().contains(subject)
-                        || tutorProfile.getSubject3().contains(subject)).collect(Collectors.<TutorProfile>toList());
+                        || tutorProfile.getSubject3().contains(subject))).collect(Collectors.toList());
     }
 
     public TutorProfile getTutor(final String id) {
@@ -71,7 +73,6 @@ public class BookTutorViewModel extends ViewModel {
     }
 
     public void notifyChangeInFilter() {
-        // areProfilesLoaded.setValue(false);
         areProfilesLoaded.setValue(true);
     }
 }

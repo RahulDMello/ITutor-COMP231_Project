@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".chat.view.ChatActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +21,7 @@
         <activity android:name=".profile.view.StudentProfileActivity" />
         <activity android:name=".profile.view.TutorProfileActivity" />
         <activity android:name=".MasterActivity" />
-        <activity android:name=".booking.view.SearchTutorActivity"></activity>
+        <activity android:name=".booking.view.SearchTutorActivity" />
     </application>
 
 </manifest>

@@ -1,9 +1,9 @@
 package com.example.itutor.main.model;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+import androidx.databinding.library.baseAdapters.BR;
 
-import com.android.databinding.library.baseAdapters.BR;
 import com.example.itutor.main.SessionInfo;
 import com.example.itutor.main.tools.DateUtilsHelper;
 import com.google.firebase.auth.FirebaseUser;

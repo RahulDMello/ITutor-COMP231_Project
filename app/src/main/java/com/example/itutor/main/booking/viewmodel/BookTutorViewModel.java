@@ -1,10 +1,9 @@
 package com.example.itutor.main.booking.viewmodel;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.annotation.NonNull;
 
-import com.example.itutor.main.model.BookedMeeting;
 import com.example.itutor.main.model.TutorProfile;
 import com.example.itutor.main.model.User;
 import com.google.firebase.auth.FirebaseAuth;

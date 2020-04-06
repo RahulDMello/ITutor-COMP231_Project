@@ -1,10 +1,10 @@
 package com.example.itutor.main.profile.viewmodel;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 import android.content.Context;
-import android.databinding.Observable;
-import android.support.annotation.NonNull;
+import androidx.databinding.Observable;
+import androidx.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.Toast;
 

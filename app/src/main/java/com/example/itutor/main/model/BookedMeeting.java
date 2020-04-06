@@ -1,7 +1,7 @@
 package com.example.itutor.main.model;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
 
 import com.example.itutor.main.BR;
 import com.example.itutor.main.tools.DateUtilsHelper;

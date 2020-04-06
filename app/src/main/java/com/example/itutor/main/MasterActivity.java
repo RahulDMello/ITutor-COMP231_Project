@@ -1,12 +1,11 @@
 package com.example.itutor.main;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.itutor.main.profile.view.StudentProfileActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 public abstract class MasterActivity extends AppCompatActivity {

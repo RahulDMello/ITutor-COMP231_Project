@@ -1,12 +1,11 @@
 package com.example.itutor.main.model;
 
-import android.databinding.BaseObservable;
-import android.databinding.Bindable;
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+import androidx.databinding.library.baseAdapters.BR;
 
-import com.android.databinding.library.baseAdapters.BR;
 import com.google.firebase.auth.FirebaseUser;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TutorProfile extends BaseObservable {

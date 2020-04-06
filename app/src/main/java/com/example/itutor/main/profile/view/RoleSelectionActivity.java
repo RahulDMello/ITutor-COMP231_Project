@@ -1,10 +1,10 @@
 package com.example.itutor.main.profile.view;
 
 import android.content.Intent;
-import android.databinding.DataBindingUtil;
+import androidx.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
 
 import com.example.itutor.main.MasterActivity;

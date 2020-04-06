@@ -1,9 +1,9 @@
 package com.example.itutor.main.profile.viewmodel;
 
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
-import android.databinding.Observable;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.databinding.Observable;
+import androidx.annotation.NonNull;
 
 import com.example.itutor.main.model.StudentProfile;
 import com.google.firebase.auth.FirebaseAuth;

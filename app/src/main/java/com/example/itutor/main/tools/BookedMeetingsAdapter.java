@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.itutor.main.R;
@@ -18,11 +19,15 @@ public class BookedMeetingsAdapter extends RecyclerView.Adapter<BookedMeetingsAd
     private TextView time;
     private TextView place;
     private TextView message;
+    private Button chat;
+
+    private ChatClickListener listener;
 
     private List<BookedMeeting> bookedMeetings;
 
-    public BookedMeetingsAdapter(List<BookedMeeting> bookedMeetings) {
+    public BookedMeetingsAdapter(List<BookedMeeting> bookedMeetings, ChatClickListener listener) {
         this.bookedMeetings = bookedMeetings;
+        this.listener = listener;
     }
 
     @NonNull
@@ -38,6 +43,9 @@ public class BookedMeetingsAdapter extends RecyclerView.Adapter<BookedMeetingsAd
         time.setText(bookedMeetings.get(i).getFormattedTime());
         place.setText(bookedMeetings.get(i).getPlace());
         message.setText(bookedMeetings.get(i).getMessage());
+        chat.setOnClickListener(v -> {
+            listener.onClick(bookedMeetings.get(i).getStudentId());
+        });
     }
 
     @Override
@@ -53,6 +61,11 @@ public class BookedMeetingsAdapter extends RecyclerView.Adapter<BookedMeetingsAd
             time = itemView.findViewById(R.id.time);
             place = itemView.findViewById(R.id.place);
             message = itemView.findViewById(R.id.message);
+            chat = itemView.findViewById(R.id.chat);
         }
+    }
+
+    public interface ChatClickListener {
+        void onClick(String id);
     }
 }

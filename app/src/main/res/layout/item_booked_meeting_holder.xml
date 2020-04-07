@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="5dp">
+    android:padding="50dp">
 
     <TextView
         android:id="@+id/studentName"
@@ -45,6 +45,12 @@
         android:layout_weight="2"
         android:maxLines="10"
         android:padding="5dp" />
+
+    <Button
+        android:id="@+id/chat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chat" />
 
     <View
         android:layout_width="match_parent"

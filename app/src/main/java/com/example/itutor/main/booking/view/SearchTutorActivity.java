@@ -13,9 +13,12 @@ import android.widget.TextView;
 import com.example.itutor.main.MasterActivity;
 import com.example.itutor.main.R;
 import com.example.itutor.main.booking.viewmodel.BookTutorViewModel;
+import com.example.itutor.main.model.TutorProfile;
 import com.example.itutor.main.profile.view.TutorProfileActivity;
 import com.example.itutor.main.tools.LaunchTutorProfileListener;
 import com.example.itutor.main.tools.SearchTutorAdapter;
+
+import java.util.ArrayList;
 
 public class SearchTutorActivity extends MasterActivity implements LaunchTutorProfileListener {
 
@@ -28,6 +31,8 @@ public class SearchTutorActivity extends MasterActivity implements LaunchTutorPr
         activeModel = ViewModelProviders.of(this).get(BookTutorViewModel.class);
         activeModel.loadProfiles();
         RecyclerView recyclerView = findViewById(R.id.tutorList);
+        recyclerView.setAdapter(new SearchTutorAdapter(this, new ArrayList<>()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         TextView subjectFilter = findViewById(R.id.subjectFilter);
 
@@ -35,7 +40,6 @@ public class SearchTutorActivity extends MasterActivity implements LaunchTutorPr
             if (areProfilesLoaded) {
                 SearchTutorAdapter adapter = new SearchTutorAdapter(SearchTutorActivity.this, activeModel.getTutorProfiles(subjectFilter.getText().toString().toLowerCase()));
                 recyclerView.setAdapter(adapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(this));
                 recyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.HORIZONTAL));
             }
         });

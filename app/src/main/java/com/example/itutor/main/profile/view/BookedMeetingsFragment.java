@@ -2,6 +2,8 @@ package com.example.itutor.main.profile.view;
 
 
 import androidx.lifecycle.ViewModelProviders;
+
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.itutor.main.chat.view.ChatActivity;
 import com.example.itutor.main.databinding.FragmentBookedMeetingsBinding;
 import com.example.itutor.main.profile.viewmodel.TutorProfileViewModel;
 import com.example.itutor.main.tools.BookedMeetingsAdapter;
@@ -39,7 +42,11 @@ public class BookedMeetingsFragment extends DialogFragment {
         BookedMeetingsAdapter adapter = new BookedMeetingsAdapter(viewModel.getProfileValue().getBookedMeetings()
                 .values().stream().filter(
                         bookedMeeting -> !DateUtilsHelper.getShortDate(bookedMeeting.getFormattedDate()).before(yesterday())
-                ).collect(Collectors.toList()));
+                ).collect(Collectors.toList()), (id) -> {
+            Intent intent = new Intent(requireActivity(), ChatActivity.class);
+            intent.putExtra(ChatActivity.RECIPIENT_ID_KEY, id);
+            startActivity(intent);
+        });
         binding.bookedMeetingsList.setAdapter(adapter);
         binding.bookedMeetingsList.setLayoutManager(new LinearLayoutManager(getActivity()));
         binding.bookedMeetingsList.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.HORIZONTAL));

@@ -10,6 +10,15 @@ import java.util.Date;
 
 public class BookedMeeting extends BaseObservable {
 
+    public String getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
+    }
+
+    private String studentId;
     private String studentName;
 
     private Date date;
@@ -20,14 +29,16 @@ public class BookedMeeting extends BaseObservable {
     private String message;
 
     public BookedMeeting() {
-        studentName = "";
+        this.studentId = "";
+        this.studentName = "";
         date = null;
         place = "";
         message = "";
     }
 
-    public BookedMeeting(String studentId) {
-        setStudentName(studentId);
+    public BookedMeeting(String studentId, String studentName) {
+        this.studentId = studentId;
+        setStudentName(studentName);
         date = null;
         place = "";
         message = "";

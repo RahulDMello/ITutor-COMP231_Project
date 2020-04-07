@@ -22,7 +22,7 @@ public class ConfirmBookingFragment extends DialogFragment {
 
         TutorProfileViewModel viewModel = ViewModelProviders.of(getActivity()).get(TutorProfileViewModel.class);
 
-        BookedMeeting meeting = new BookedMeeting(SessionInfo.STUDENT_NAME);
+        BookedMeeting meeting = new BookedMeeting(SessionInfo.STUDENT_ID, SessionInfo.STUDENT_NAME);
 
         binding.setBookedMeeting(meeting);
 

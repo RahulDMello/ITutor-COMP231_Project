@@ -3,7 +3,6 @@ package com.example.itutor.main.profile.view;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.databinding.DataBindingUtil;
 
@@ -58,7 +57,7 @@ public class TutorProfileActivity extends MasterActivity {
 
         binding.chat.setOnClickListener(view -> {
             Intent intent = new Intent(TutorProfileActivity.this, ChatActivity.class);
-            intent.putExtra(ChatActivity.TUTOR_ID_KEY, tutorID);
+            intent.putExtra(ChatActivity.RECIPIENT_ID_KEY, tutorID);
             startActivity(intent);
         });
     }

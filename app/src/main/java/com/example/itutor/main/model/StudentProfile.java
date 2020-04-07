@@ -45,6 +45,7 @@ public class StudentProfile extends BaseObservable {
 
     public void setId(String id) {
         this.id = id;
+        SessionInfo.STUDENT_ID = id;
         notifyPropertyChanged(BR.id);
     }
 

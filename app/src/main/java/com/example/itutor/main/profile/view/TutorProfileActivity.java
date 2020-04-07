@@ -20,6 +20,7 @@ import com.example.itutor.main.databinding.ActivityTutorProfileBinding;
 import com.example.itutor.main.model.TutorProfile;
 import com.example.itutor.main.profile.presenter.TutorProfilePresenter;
 import com.example.itutor.main.profile.viewmodel.TutorProfileViewModel;
+import com.example.itutor.main.review.view.ReviewActivity;
 
 public class TutorProfileActivity extends MasterActivity {
 
@@ -58,6 +59,13 @@ public class TutorProfileActivity extends MasterActivity {
         binding.chat.setOnClickListener(view -> {
             Intent intent = new Intent(TutorProfileActivity.this, ChatActivity.class);
             intent.putExtra(ChatActivity.RECIPIENT_ID_KEY, tutorID);
+            startActivity(intent);
+        });
+
+        binding.reviews.setOnClickListener(view -> {
+            Intent intent = new Intent(TutorProfileActivity.this, ReviewActivity.class);
+            intent.putExtra(ReviewActivity.IS_TUTOR_TAG, presenter.isPersonalTutorProfile());
+            intent.putExtra(ReviewActivity.TUTOR_ID_TAG, tutorID);
             startActivity(intent);
         });
     }

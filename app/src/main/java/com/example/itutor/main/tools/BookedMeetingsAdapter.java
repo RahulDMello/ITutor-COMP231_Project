@@ -53,7 +53,7 @@ public class BookedMeetingsAdapter extends RecyclerView.Adapter<BookedMeetingsAd
         return bookedMeetings.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    class ViewHolder extends RecyclerView.ViewHolder {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             studentName = itemView.findViewById(R.id.studentName);

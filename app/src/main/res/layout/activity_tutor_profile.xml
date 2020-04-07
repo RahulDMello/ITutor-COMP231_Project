@@ -149,6 +149,13 @@
                 android:text="Upcoming Meetings" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/reviews"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View Reviews" />
+
     </LinearLayout>
 
 </layout>

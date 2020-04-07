@@ -6,7 +6,10 @@ import androidx.databinding.library.baseAdapters.BR;
 
 import com.google.firebase.auth.FirebaseUser;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class TutorProfile extends BaseObservable {
 
@@ -18,6 +21,8 @@ public class TutorProfile extends BaseObservable {
     private String subject3;
     private HashMap<String, BookedMeeting> bookedMeetings;
 
+    private HashMap<String, Review> reviews;
+
     public TutorProfile() {
         id = "";
         firstName = "";
@@ -26,6 +31,7 @@ public class TutorProfile extends BaseObservable {
         subject2 = "";
         subject3 = "";
         bookedMeetings = new HashMap<>();
+        reviews = new HashMap<>();
     }
 
     public TutorProfile(FirebaseUser user) {
@@ -36,6 +42,7 @@ public class TutorProfile extends BaseObservable {
         subject2 = "";
         subject3 = "";
         bookedMeetings = new HashMap<>();
+        reviews = new HashMap<>();
     }
 
     public void update(TutorProfile tutorProfile) {
@@ -46,6 +53,7 @@ public class TutorProfile extends BaseObservable {
         setSubject2(tutorProfile.subject2);
         setSubject3(tutorProfile.subject3);
         setBookedMeetings(tutorProfile.bookedMeetings);
+        setReviews(tutorProfile.reviews);
     }
 
     @Bindable
@@ -114,5 +122,13 @@ public class TutorProfile extends BaseObservable {
 
     public void setBookedMeetings(HashMap<String, BookedMeeting> bookedMeetings) {
         this.bookedMeetings = bookedMeetings;
+    }
+
+    public HashMap<String, Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(HashMap<String, Review> reviews) {
+        this.reviews = reviews;
     }
 }

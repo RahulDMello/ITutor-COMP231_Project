@@ -1,49 +1,49 @@
 package com.example.itutor.main.chat.viewmodel;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.itutor.main.model.Message;
-
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class ChatViewModel extends ViewModel {
-    private MutableLiveData<List<Message>> messages;
+    private FirebaseAuth mAuth;
+    private String currentSenderId;
+    private String currentRecipientId;
+    private String chatId = "";
 
-    public LiveData<List<Message>> getMessages() {
-        if (messages == null) {
-            messages = new MutableLiveData<>();
-            ArrayList<Message> list = new ArrayList<>();
+    public void setCurrentRecipientId(String currentRecipientId) {
+        this.currentRecipientId = currentRecipientId;
+    }
 
-            Message m = new Message();
-            m.setMessage("message 1");
-            m.setSenderId("sender");
-            m.setTimestamp(System.currentTimeMillis());
-            list.add(m);
+    public DatabaseReference getCurrentReference() {
+        return FirebaseDatabase.getInstance().getReference().child("chat").child(getChatId());
+    }
 
-            m = new Message();
-            m.setMessage("message 2");
-            m.setSenderId("reci");
-            m.setTimestamp(System.currentTimeMillis());
-            list.add(m);
-
-            messages.setValue(list);
+    private String getChatId() {
+        if (chatId.equals("")) {
+            mAuth = FirebaseAuth.getInstance();
+            currentSenderId = mAuth.getCurrentUser().getUid();
+            if (currentRecipientId.compareTo(currentSenderId) > 0) {
+                chatId = currentSenderId + "_" + currentRecipientId;
+            } else {
+                chatId = currentRecipientId + "_" + currentSenderId;
+            }
         }
-
-        return messages;
+        return chatId;
     }
 
     public void postMessage(String message) {
-        Message m = new Message();
-        m.setMessage(message);
-        m.setSenderId("sender");
-        m.setTimestamp(System.currentTimeMillis());
-        messages.getValue().add(m);
-        messages.postValue(messages.getValue());
+        if (!message.trim().isEmpty()) {
+            Message m = new Message();
+            m.setMessage(message);
+            m.setSenderId(currentSenderId);
+            m.setTimestamp(System.currentTimeMillis());
+
+            getCurrentReference().push().setValue(m);
+
+        }
     }
 
 }

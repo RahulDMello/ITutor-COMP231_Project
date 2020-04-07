@@ -10,20 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.itutor.main.R;
 import com.example.itutor.main.model.Message;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-import java.util.Collections;
-import java.util.List;
-
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
+public class ChatAdapter extends FirebaseRecyclerAdapter<Message, ChatAdapter.ViewHolder> {
 
     private static final int TYPE_SENDER = 1;
     private static final int TYPE_RECIPIENT = 2;
 
-    private List<Message> messageList;
     private String currentSenderId;
 
-    public ChatAdapter(List<Message> messageList, String currentSenderId) {
-        this.messageList = messageList;
+    public ChatAdapter(FirebaseRecyclerOptions<Message> options, String currentSenderId) {
+        super(options);
         this.currentSenderId = currentSenderId;
     }
 
@@ -32,24 +30,19 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     public ChatAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         if (i == TYPE_SENDER)
             return new ChatAdapter.SenderViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_chat_sender_holder, viewGroup, false));
-        return new ChatAdapter.SenderViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_chat_recipient_holder, viewGroup, false));
+        return new ChatAdapter.RecipientViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_chat_recipient_holder, viewGroup, false));
     }
 
     @Override
     public int getItemViewType(int position) {
-        if(messageList.get(position).getSenderId().equals(currentSenderId))
+        if(getItem(position).getSenderId().equals(currentSenderId))
             return TYPE_SENDER;
         return TYPE_RECIPIENT;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ChatAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.Message.setText(messageList.get(i).getMessage());
-    }
-
-    @Override
-    public int getItemCount() {
-        return messageList.size();
+    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Message model) {
+        holder.Message.setText(getItem(position).getMessage());
     }
 
     public class RecipientViewHolder extends ViewHolder {

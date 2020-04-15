@@ -1,5 +1,6 @@
 package com.example.itutor.main.booking.viewmodel;
 
+import androidx.annotation.VisibleForTesting;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 import androidx.annotation.NonNull;
@@ -22,7 +23,8 @@ public class BookTutorViewModel extends ViewModel {
     private FirebaseAuth mAuth;
     private DatabaseReference mRootRef = FirebaseDatabase.getInstance().getReference();
 
-    private ArrayList<TutorProfile> tutorProfiles = new ArrayList<>();
+    @VisibleForTesting(otherwise = VisibleForTesting.NONE)
+    ArrayList<TutorProfile> tutorProfiles = new ArrayList<>();
 
     private MutableLiveData<Boolean> areProfilesLoaded;
 

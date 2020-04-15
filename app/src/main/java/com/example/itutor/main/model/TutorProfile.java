@@ -1,15 +1,13 @@
 package com.example.itutor.main.model;
 
+import androidx.annotation.Nullable;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 import androidx.databinding.library.baseAdapters.BR;
 
 import com.google.firebase.auth.FirebaseUser;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class TutorProfile extends BaseObservable {
 
@@ -130,5 +128,10 @@ public class TutorProfile extends BaseObservable {
 
     public void setReviews(HashMap<String, Review> reviews) {
         this.reviews = reviews;
+    }
+
+    @Override
+    public boolean equals(@Nullable Object obj) {
+        return ((TutorProfile) obj).id.equals(id);
     }
 }
